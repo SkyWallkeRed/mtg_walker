@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{parserData.status ? parserData.status : parserData.progress}}</ion-title>
+        <ion-title>{{parserData.progress ? parserData.progress : parserData.status}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <p *ngIf="!activeParser" class="ion-text-center"><ion-button [disabled]="activeParser" (click)="scanImg()">CAMERA</ion-button></p>
+    <ion-img (click)="getCoords($event)" *ngIf="!resultData" #renderedImg [src]="displayImage"></ion-img>
+    <ion-card *ngIf="resultData">
+        <ion-card-header>Result</ion-card-header>
+        <ion-card-content>
+            {{resultData}}
+        </ion-card-content>
+    </ion-card>
+</ion-content>
